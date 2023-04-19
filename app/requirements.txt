@@ -4,3 +4,4 @@ gunicorn
 pydantic
 flask-sqlalchemy
 SQLAlchemy
+Flask-Cors
