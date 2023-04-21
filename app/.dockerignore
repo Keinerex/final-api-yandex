@@ -1,3 +1,4 @@
-.idea
-.git
-Dockerfile
+/.git/
+/venv/
+/Dockerfile
+/.idea/
