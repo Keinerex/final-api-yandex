@@ -54,9 +54,9 @@ def login():
         return jsonify({"msg": "error"})
 
     if not user or not user.check_password(password):
-        return jsonify("Wrong username or password"), 401
+        return jsonify({"status": False}), 401
 
-    response = jsonify({"msg": "login successful"})
+    response = jsonify({"status": True})
     access_token = create_access_token(identity=user.id)
     set_access_cookies(response, access_token)
     return response
@@ -80,12 +80,12 @@ def register():
     user = User.query.filter_by(username=username).one_or_none()
 
     if not user and username and password:
-        db.session.add(User(username=username, password_hash=generate_password_hash(password), cart=json.dumps({}),
-                            favourite=json.dumps({})))
+        db.session.add(User(username=username, password_hash=generate_password_hash(password),
+                            cart=json.dumps({"books": {}, "price": 0})))
         db.session.commit()
-        return jsonify({"msg": "register successful"})
+        return jsonify({"status": True})
 
-    return jsonify({"msg": "register error"})
+    return jsonify({"status": False})
 
 
 @bp.route("/logout", methods=["POST"])
@@ -118,17 +118,6 @@ def update_cart():
     return jsonify({"msg": "error"})
 
 
-@bp.route("/update_favourite", methods=["PUT"])
-@jwt_required()
-def update_favourite():
-    favourite = request.json.get("favourite", None)
-    if favourite:
-        current_user.favourite = json.dumps(favourite)
-        db.session.commit()
-        return jsonify({"msg": "favourite was updated"})
-    return jsonify({"msg": "error"})
-
-
 @bp.route("/update_userdata", methods=["PUT"])
 @jwt_required()
 def update_userdata():
@@ -140,14 +129,14 @@ def update_userdata():
     date = request.json.get("date", None)
     if name and surname and email and tel and date:
         current_user.patronymic = patronymic
-
         current_user.surname = surname
+        current_user.name = name
         current_user.email = email
         current_user.tel = tel
         current_user.date = date
         db.session.commit()
-        return jsonify({"msg": "userdata was updated"})
-    return jsonify({"msg": "error"})
+        return jsonify({"status": True})
+    return jsonify({"status": False})
 
 
 @bp.route("/categories", methods=["GET"])

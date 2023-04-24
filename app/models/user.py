@@ -14,10 +14,9 @@ class User(BaseModel):
     surname = db.Column(db.VARCHAR(80))
     patronymic = db.Column(db.VARCHAR(80))
     email = db.Column(db.String(120), unique=True)
-    tel = db.Column(db.String(16), unique=True)
+    tel = db.Column(db.String(18), unique=True)
     password_hash = db.Column(db.String(128))
     cart = db.Column(db.Text())
-    favourite = db.Column(db.Text())
     date = db.Column(db.VARCHAR(10))
 
     @property
