@@ -4,4 +4,6 @@ gunicorn
 pydantic
 flask-sqlalchemy
 SQLAlchemy
+Flask-JWT-Extended
+Flask-Cors
 flask-Migrate
