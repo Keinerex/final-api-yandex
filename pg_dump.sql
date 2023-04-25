@@ -121,7 +121,15 @@ CREATE TABLE public.reviews (
 
 CREATE TABLE public.users (
     name character varying(80),
-    id uuid NOT NULL
+    id uuid NOT NULL,
+    username character varying(80),
+    email character varying(120),
+    tel character varying(18),
+    password_hash character varying(128),
+    cart text,
+    surname character varying(80),
+    patronymic character varying(80),
+    date character varying(10)
 );
 
 
@@ -252,29 +260,29 @@ INSERT INTO public.reviews VALUES ('35913a29-929b-4815-acaf-e31b3364d36b', 'e540
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES ('Женя', '466a5d17-7d50-4343-912f-17a7c4ac3bb4');
-INSERT INTO public.users VALUES ('Юлия', 'e8a383a0-6799-4fc6-9a84-c587bb08a086');
-INSERT INTO public.users VALUES ('Анна', '781c88f0-ed56-4216-b14c-4e59213fb591');
-INSERT INTO public.users VALUES ('Руслан', '045848b8-4a77-4f94-ba2b-a79c4663f374');
-INSERT INTO public.users VALUES ('Алена', 'e5402e8f-e74c-4713-8400-258fd6180930');
-INSERT INTO public.users VALUES ('Эмилия', 'f03f2989-a60a-4d8c-97c9-79eaabcff187');
-INSERT INTO public.users VALUES ('Дарья', '61f4427e-e531-462c-a7e0-64b2e01ac373');
-INSERT INTO public.users VALUES ('Ирина', '53733726-ab77-4437-91c8-ebeb63141381');
-INSERT INTO public.users VALUES ('Марина', '5405ce42-d729-4ac0-9c83-d9aa704b56c9');
-INSERT INTO public.users VALUES ('Наталья', '68990cd3-5026-451c-b812-76def7390c24');
-INSERT INTO public.users VALUES ('Айза', '10c15fdc-cf7c-4bf7-b0c3-bbb40e3266cb');
-INSERT INTO public.users VALUES ('Полина', '680a913e-a360-4caf-aa1e-14a1ba028340');
-INSERT INTO public.users VALUES ('Елена', '1d927531-4bd2-4a42-92d2-965db63fa018');
-INSERT INTO public.users VALUES ('Анастасия', '2519aa7e-ca88-4a0c-990b-02930637c021');
-INSERT INTO public.users VALUES ('Нет', 'c6cd9d12-cb31-469b-8ccd-a6996b84a168');
-INSERT INTO public.users VALUES ('Ангелина', '45fde95f-0d3f-4923-a48a-d155d2a562e4');
-INSERT INTO public.users VALUES ('Екатерина', 'dbc59991-933e-486f-aec3-f53c313a9df9');
-INSERT INTO public.users VALUES ('Ольга', 'db7149ee-59d0-406f-b1cd-c3fa0af93ca2');
-INSERT INTO public.users VALUES ('Дмитрий', 'f71c37a2-277d-477c-8614-d007de597b9d');
-INSERT INTO public.users VALUES ('Владимир', 'b3406eda-c4e1-4eac-b9d1-bacc1b32ac36');
-INSERT INTO public.users VALUES ('Маргарита', 'ab1b16b5-742f-4cd4-89d9-7bc8a6277526');
-INSERT INTO public.users VALUES ('Диана', '2bd622b0-158d-48b6-ba45-639be74ac073');
-INSERT INTO public.users VALUES ('Альбина', '67b33236-633d-4e13-b1c4-fa93024a6527');
+INSERT INTO public.users VALUES ('Женя', '466a5d17-7d50-4343-912f-17a7c4ac3bb4', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Юлия', 'e8a383a0-6799-4fc6-9a84-c587bb08a086', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Анна', '781c88f0-ed56-4216-b14c-4e59213fb591', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Руслан', '045848b8-4a77-4f94-ba2b-a79c4663f374', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Алена', 'e5402e8f-e74c-4713-8400-258fd6180930', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Эмилия', 'f03f2989-a60a-4d8c-97c9-79eaabcff187', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Дарья', '61f4427e-e531-462c-a7e0-64b2e01ac373', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Ирина', '53733726-ab77-4437-91c8-ebeb63141381', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Марина', '5405ce42-d729-4ac0-9c83-d9aa704b56c9', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Наталья', '68990cd3-5026-451c-b812-76def7390c24', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Айза', '10c15fdc-cf7c-4bf7-b0c3-bbb40e3266cb', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Полина', '680a913e-a360-4caf-aa1e-14a1ba028340', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Елена', '1d927531-4bd2-4a42-92d2-965db63fa018', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Анастасия', '2519aa7e-ca88-4a0c-990b-02930637c021', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Нет', 'c6cd9d12-cb31-469b-8ccd-a6996b84a168', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Ангелина', '45fde95f-0d3f-4923-a48a-d155d2a562e4', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Екатерина', 'dbc59991-933e-486f-aec3-f53c313a9df9', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Ольга', 'db7149ee-59d0-406f-b1cd-c3fa0af93ca2', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Дмитрий', 'f71c37a2-277d-477c-8614-d007de597b9d', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Владимир', 'b3406eda-c4e1-4eac-b9d1-bacc1b32ac36', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Маргарита', 'ab1b16b5-742f-4cd4-89d9-7bc8a6277526', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Диана', '2bd622b0-158d-48b6-ba45-639be74ac073', null, null, null, null, null, null, null, null);
+INSERT INTO public.users VALUES ('Альбина', '67b33236-633d-4e13-b1c4-fa93024a6527', null, null, null, null, null, null, null, null);
 
 
 --
