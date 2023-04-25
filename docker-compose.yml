@@ -16,7 +16,7 @@ services:
     container_name: app
     restart: always
     command:
-      sh -c "cd ./app && gunicorn --bind 0.0.0.0:5000 index:app"
+      sh -c "cd ./app && gunicorn --bind 0.0.0.0:5000 app:app"
     expose:
       - 5000
     environment:
