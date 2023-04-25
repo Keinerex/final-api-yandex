@@ -46,8 +46,6 @@ def refresh_expiring_jwts(response):
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
-    print(request.json)
-    print(username, password)
     try:
         user = User.query.filter_by(username=username).one_or_none()
     except Exception as e:
